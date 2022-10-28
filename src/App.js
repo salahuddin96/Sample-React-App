@@ -7,7 +7,7 @@ function App() {
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Uploaded by <b>Salahuddin Shaikh</b>
+          React App deployment on Azure Storage through GitHub Actions
         </p>
         <a
           className="App-link"
@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          SALAHUDDIN
         </a>
       </header>
     </div>
