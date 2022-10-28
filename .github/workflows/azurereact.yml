@@ -1,0 +1,35 @@
+name: React App deployment on Azure Storage through GitHub Actions.
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - '*'
+defaults:
+  run:
+    working-directory: ./
+env:
+  NODE_VERSION: '17'                # Node version you want to use
+  CI: false
+jobs:
+  build-and-deploy:
+    name: Build and Deploy
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ env.NODE_VERSION }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ env.NODE_VERSION }}
+    - name: npm install & build
+      run: |
+        npm install
+        npm run build
+    - name: 'React App deployment on Azure Storage through GitHub Actions'
+      uses: azure/login@v1
+      with:
+          source_dir: './build'
+          container_name: '$web'
+          connection_string: ${{ secrets.AZURE_REACT_STORAGE }} 
+          sync: 'true'
