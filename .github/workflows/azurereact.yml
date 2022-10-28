@@ -27,7 +27,8 @@ jobs:
         npm install
         npm run build
     - name: 'React App deployment on Azure Storage through GitHub Actions'
-      uses: azure/login@v1
+      #uses: azure/login@v1
+      uses: bacongobbler/azure-blob-storage-upload@main
       with:
           source_dir: './build'
           container_name: '$web'
