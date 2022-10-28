@@ -10,7 +10,7 @@ defaults:
   run:
     working-directory: ./
 env:
-  NODE_VERSION: '17'                # Node version you want to use
+  NODE_VERSION: '16'                # Node version you want to use
   CI: false
 jobs:
   build-and-deploy:
@@ -28,7 +28,7 @@ jobs:
         npm run build
     - name: 'React App deployment on Azure Storage through GitHub Actions'
       #uses: azure/login@v1
-      uses: bacongobbler/azure-blob-storage-upload@main
+      uses: bacongobbler/azure-blob-storage-upload@main  ##This action is designed to use the Azure CLI to upload a directory of your choice to your Azure Blob Storage account
       with:
           source_dir: './build'
           container_name: '$web'
